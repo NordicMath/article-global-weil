@@ -81,16 +81,42 @@
 %----------------------------------------------------------------------------------------
 
 \begin{abstract}
-In arithmetic geometry, we distinguish between local zeta functions (attached to schemes in positive characteristic) and global zeta functions (attached to schemes in characteristic zero). Local zeta functions have a highly constrained structure, governed by the four Weil conjectures (rationality, functional equation, Riemann hypothesis and connection to Betti numbers). There is a well-known analogy between local and global zeta functions, and the analogues of the functional equation and the Riemann hypothesis are expected to hold also in the global case.
+In arithmetic geometry, we distinguish between local zeta functions (attached to schemes in positive characteristic) and global zeta functions (attached to schemes in characteristic zero). Local zeta functions have a highly constrained structure, governed by the four Weil conjectures (rationality, functional equation, local Riemann hypothesis and connection to Betti numbers).
 
-In these notes we describe some numerical evidence that may be pointing to a new and different kind of analogy between local and global zeta functions. We formulate four guiding but totally imprecise conjectures (Conjecture X, Conjecture Y, Conjecture Z and Conjecture N) that may perhaps be viewed as global analogues of the Weil conjectures together with the surrounding theory of schemes and cohomology, which has been so successful in the local setting.
+There is a well-known analogy between local and global zeta functions, under which the global analogue of rationality is false, the global analogue of Betti numbers makes no sense, and the global analogue of the functional equation would follow from the global Langlands correspondence. The global analogue of the Riemann hypothesis is also expected to hold; this is the statement sometimes referred to as the "Grand", or "Generalized" Riemann hypothesis.
+
+In these notes we describe some numerical evidence that may be pointing to a new and completely different kind of analogy between local and global zeta functions. We formulate four guiding but rather imprecise conjectures (Conjecture X, Conjecture Y, Conjecture Z and Conjecture N). Here Conjecture X is analogous to the four Weil conjectures, while Conjecture Y and Z speculate on the existence of a geometric and cohomological framework explaining Conjecture X. Conjecture N is a complementary conjecture, describing the role of the conductor associated to an L-function.
+
+%It is surprising that under this new analogy, the local RH is not related to the global RH, but rather to special value conjectures like BSD.
+
 \end{abstract}
+
+
+\newpage
+
+Here will be pictures:
+
+(1) Genus 2 curve over F5 vs Dirichlet character mod 5. The points are paired with product 5, because we are working with a variety over F5. In the other picture, the points are paired with product 1, as if we were working over the field F1.
+
+(2) Local and global point count for an elliptic curve with CM.
+
+(3) The weird pair conjecture with 289 and 389 as the two examples (one m and one M).
+
+
+\newpage
+
+\tableofcontents
+
+
+\newpage
 
 \section{Introduction}
 
+\subsection{Formal series associated to a scheme}
+
 Consider a scheme $X$ (of finite type over $\mathbb{Z}$). There are four ways of thinking about (or \emph{representing}) schemes, namely:
 \begin{enumerate}
-\item The "naive" viewpoint: A scheme is a finite list of variables together with a finite list of polynomial equations (with integer coefficents, say) in these variables. One can elaborate this viewpoint slightly in order to allow for both affine and projective schemes.
+\item The "naive" viewpoint: A scheme is a finite list of variables together with a finite list of polynomial equations (with integer coefficents) in these variables. One can elaborate this viewpoint slightly in order to allow for both affine and projective schemes.
 \item The "commutative algebra" viewpoint: A scheme is a commutative ring, or a collection of commutative rings "glued together".
 \item The "functor of points" viewpoint: A scheme is a functor from the category of commutative rings to the category of sets.
 \item The "locally ringed space" viewpoint: A scheme is a topological space equipped with a sheaf of commutative rings such that all the stalks are local rings.
@@ -99,17 +125,28 @@ Consider a scheme $X$ (of finite type over $\mathbb{Z}$). There are four ways of
 Given a scheme $X$, we can associate to it a number of interesting formal series:
 \begin{itemize}
 
-\item For each prime $p$, there is a local zeta function $Z_p(X, t)$ attached to $X$ (also denoted $Z(X, t)$ if the choice of prime is understood from the context). It is a power series in the variable $t$, encoding the number of solutions (or "points") of $X$ in all finite fields of characteristic $p$. The first part of the Weil conjectures says that this power series is a rational function, a statement that implies a highly surprising relation between point counts in different finite fields of the same characteristic.
+\item For each prime $p$, there is a local zeta function $Z_p(X, t)$ attached to $X$ (also denoted $Z(X, t)$ if the choice of prime is understood from the context). It is a power series in the variable $t$, encoding the number of solutions (or "points") of $X$ in all finite fields of characteristic $p$. The first part of the Weil conjectures says that this power series is a rational function, a statement that implies highly surprising relations between point counts in different finite fields of same characteristic.
 
-\item There is also a global zeta function $\zeta(X, s)$. This is a Dirichlet series, i.e. a series of the form
+The local zeta function is sometimes expressed in another form, obtained by replacing the variable $t$ by the expression $p^{-s}$, and the resulting expression is a Dirichlet series in $s$, i.e. a series of the form
 $$ a_1 + \frac{a_2}{2^s} + \frac{a_3}{3^s} + \ldots = \sum_{n=1}^{\infty} \frac{a_n}{n^s}   $$
-defined by the Euler product
+The Dirichlet series arising in this way have the special property that $a_n=0$ whenever $n$ is not an integer power of $p$.
+
+\item There is also a global zeta function $\zeta(X, s)$. This is also a Dirichlet series, defined by the Euler product
 $$  \prod_p Z_p(X, p^{-s})  $$
 and hence encoding the number of solutions to $X$ in ALL finite fields. (Check sign conventions here.)
 
 \item Furthermore, for any integer $j$, there is an L-function $L(X, j, s)$ which is also a Dirichlet series. We prefer the notation $L(X, j, s)$ over the more common $L(h^j(X), s)$ because it is perfectly possible to talk about the L-function without first defining or even talking about the "motive" $h^j(X)$.
 
 \end{itemize}
+
+
+\subsection{The $m$-function of a scheme}
+
+The $m$-function associated to a scheme is yet another formal series. One way of introducing $m$-functions is to consider this table:
+
+ADD TABLE: One direction: Local vs globa. The other direction: s-version (Dirichlet) vs t-version (MacLaurin)
+
+Here is the formal definition.
 
 \paragraph{The $m$-function}
 For any Dirichlet series
@@ -121,18 +158,24 @@ $$ M(t) = a_1 + a_2 \frac{t}{2} + a_3 \frac{t^2}{3} + \ldots   $$
 obtained by taking the antiderivative of $m(t)$ (with zero constant term) and then dividing by $t$. (Remark: On the level of motives, this operation would correspond to applying the inverse Tate twist.)
 %\end{definition}
 
-If the Dirichlet series is of the form $\zeta(X, s)$ or $L(X, j, s)$, then there are bounds on the coefficients $a_n$ which imply that the series $m(t)$ has convergence radius 1. We may therefore take an L-function or a global zeta function and study its associated $m$-function as a function on the unit disc (and also beyond the unit disc, \emph{if} we can find a way of extending $m(t)$ meromorphically).
+If the Dirichlet series is of the form $\zeta(X, s)$ or $L(X, j, s)$, then there are bounds on the coefficients $a_n$ which imply that the series $m(t)$ has convergence radius 1. We may therefore take an L-function or a global zeta function and study its associated $m$-function not just as a formal series, but as a function on the unit disc (and also beyond the unit disc, \emph{if} we can find a way of extending $m(t)$ meromorphically).
+
+IMAGE: Insert a 3D plot here of a typical example.
+
+
+\subsection{New conjectures}
 
 \paragraph{Key idea}
-The new local-global analogies that we propose arise from the idea that the $m$-function $m(t)$ should be viewed as the direct global analogue of the local zeta function $Z(X, t)$. This leads naturally to three main "conjectures", and we summarize the main ideas straight away under the headings "Conjecture X", "Conjecture Y" and "Conjecture Z". However, these conjectures become convincing only in the light of the numerical evidence presented further down. We also mention an auxiliary "Conjecture N" regarding the conductor of an L-function.
+The new local-global analogies that we propose arise from the idea that the $m$-function $m(t)$ should be viewed as the direct global analogue of the local zeta function $Z(X, t)$. This leads naturally to three main "conjectures" (at the moment they are not always very precise!), and we summarize the main ideas straight away under the headings "Conjecture X", "Conjecture Y" and "Conjecture Z". We also mention an auxiliary "Conjecture N" regarding the conductor of an L-function. The rest of the paper will then be devoted to discussing numerical evidence, special cases, and refinements of these conjectures.
 
-Finally, we emphasize that even though there might be a Conjecture X along the lines we propose, it may happen that Conjecture Y and Z are completely nonsensical, and that the patterns described by Conjecture X will be explained by some other ideas or theories that we have not been able to recognize.
+Finally, let us emphasize that there is a clear distinction between Conjecture X on one hand and Conjecture Y and Z on the other. For Conjecture X, the numerical evidence is strong enough to say that there is clearly something interesting going on, and some version of Conjecture X is almost certainly useful. The other two conjectures are much more speculative, and possibly nonsensical, as they constitute but one possible interpretation of the numerical evidence supporting Conjecture X.
+
 
 \paragraph{Conjecture X}
 
-The Weil conjectures tell us that any local zeta function $Z(X, t)$ is a rational function (and hence completely determined by its zeroes and poles), and they furthermore give strong constraints on the location of these zeroes and poles.
+The Weil conjectures tell us that any local zeta function $Z(X, t)$ is a rational function (and hence completely determined by its zeroes and poles, since the constant term is 1), and they furthermore give strong constraints on the location of these zeroes and poles.
 
-In Conjecture X, we propose that at least in certain cases, we can say things about the zeroes of $m(t)$ and $M(t)$ in statements that are reminiscent of the Weil conjectures, including the Riemann hypothesis for a local zeta function.
+In Conjecture X, we propose that at least in certain cases, we can say things about the zeroes of $m(t)$ and $M(t)$ in statements that are reminiscent of the Weil conjectures, including the local Riemann hypothesis.
 
 As an example, for the L-function associated to a given elliptic curve of algebraic rank 2, Conjecture X implies the BSD conjecture. An interesting note here is that Conjecture X would make sense even if we did not know modularity for elliptic curves, while the standard formulation of BSD relies on modularity, since we need to speak about the L-function at a point outside of the domain of convergence of the Euler product.
 
@@ -144,6 +187,17 @@ We recall that there are four parts of the Weil conjectures, and we shall discus
 \item Riemann hypothesis
 \item Connection to Betti numbers
 \end{enumerate}
+
+\paragraph{Conjecture X1: Pseudo-rationality}
+
+We conjecture that for any motivic L-function, the associated $m$-function $m(t)$ has the following properties:
+\begin{itemize}
+\item It can be meromorphically continued to the whole complex plane.
+\item It has a finite number of poles, all located on the unit circle.
+\item Pairing conjecture for zeroes.
+\item Hadamard g-function is nice.
+\end{itemize}
+
 
 \paragraph{Conjecture Y}
 
@@ -177,6 +231,8 @@ Conjecture Z (for which we have no evidence at all) says that there are cohomolo
 Every L-function $L(X, j, s)$ is conjectured to satisfy a so-called \emph{global functional equation} (GFE). Briefly, the GFE for a given L-function says that there exists a positive integer $N$ (depending on the choice of L-function!) such that a certain functional equation (involving $N$ together with a set of Gamma-factors) holds for the L-function. We refer to Farmer et. al. (give ref) for details.
 
 The number $N$ here is called the \emph{conductor} of the L-function, and in order to compute it, one usually computes its $p$-adic valuation for all primes $p$, via a study of ramification in the underlying Galois representations. Our Conjecture $N$ (or more precisely: our vague hope!) says that there exists some practical recipe for computing the $N$ by finding its archimedean absolute value directly, without taking the tedious and technically taxing route through all the non-archimedean ones.
+
+Add that just an estimate for N would be great, since we often know the bad primes but not the conductor exponents.
 
 
 \section{Preliminaries}
@@ -276,10 +332,11 @@ Here $M(t)$ has two real zeroes for $E(389)$ and $-E(4 \cdot 389)$.
 Also, $m(t)$ has zeroes at $-0.6042576046984\ldots$ and at $0.385172566491\ldots$
 
 There are two more real zeroes it seems. Add the real plot and check if there are relations between the zeroes, possibly the same relation (whatever it is!) as between the E-numbers in previous examples.
-
 \subsection{Betti numbers}
 
-Discuss the previous examples in terms of algebraic cohomology, cohomology, and Hodge numbers?
+Local setting: algebraic part of cohomology, all of cohomology, and Hodge numbers.
+
+Take relevant examples and discuss their interpretation, for example the dark motive underlying the mod 5 Dir character would have three non-zero cohomology groups, with the conductor being essentially the middle Betti number.
 
 \section{Conjecture Y: Geometric/combinatorial framework?}
 
