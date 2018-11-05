@@ -63,7 +63,7 @@
 \normalfont \normalsize
 \textsc{Work in progress; do not distribute!} \\ [25pt] % Your university, school and/or department name(s)
 \horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
-\LARGE Towards global analogues of the Weil conjectures? \\ % The assignment title
+\LARGE The Weil conjectures and the field with one element \\ % The assignment title
 \horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
 }
 
@@ -81,13 +81,12 @@
 %----------------------------------------------------------------------------------------
 
 \begin{abstract}
-In arithmetic geometryy, we distinguish between local zeta functions (attached to schemes in positive characteristic) and global zeta functions (attached to schemes in characteristic zero). Local zeta functions have a highly constrained structure, governed by the four Weil conjectures (rationality, functional equation, local Riemann hypothesis and connection to Betti numbers).
 
-There is a well-known analogy between local and global zeta functions, under which the global analogue of rationality is false, the global analogue of Betti numbers makes no sense, and the global analogue of the functional equation would follow from the global Langlands correspondence. The global analogue of the Riemann hypothesis is also expected to hold; this is the statement sometimes referred to as the "Grand", or "Generalized" Riemann hypothesis.
+We report on some numerical patterns that might possibly suggest that there is version of the Weil conjectures over "the field with one element".
 
-In these notes we describe some numerical evidence that may be pointing to a new and completely different kind of analogy between local and global zeta functions. We formulate four guiding but rather imprecise conjectures (Conjecture X, Conjecture Y, Conjecture Z and Conjecture N). Here Conjecture X is analogous to the four Weil conjectures, while Conjecture Y and Z speculate on the existence of a geometric and cohomological framework explaining Conjecture X. Conjecture N is a complementary conjecture, describing the role of the conductor associated to an L-function.
+These very informal notes grew out of two separate projects, namely (1) a student project on L-functions and reciprocity laws by the first two authors, and (2) a project on analogies and automated reasoning by the other two.
 
-%It is surprising that under this new analogy, the local RH is not related to the global RH, but rather to special value conjectures like BSD.
+
 
 \end{abstract}
 
@@ -96,7 +95,7 @@ In these notes we describe some numerical evidence that may be pointing to a new
 
 Here will be pictures:
 
-(1) Genus 2 curve over F5 vs Dirichlet character mod 5. The points are paired with product 5, because we are working with a variety over F5. In the other picture, the points are paired with product 1, as if we were working over the field F1.
+(1) Genus 2 curve over F5 vs Dirichlet character mod 5. The points are paired with product 5, because we are working with a variety over F5. In the other picture, the points are paired with product 1, as if we were working over the field F1. Note also the functional equation in both cases, which suggests that the Euler characteristic of any non-trivial Dirichlet character equals 2.
 
 (2) Local and global point count for an elliptic curve with CM.
 
@@ -111,6 +110,14 @@ Here will be pictures:
 \newpage
 
 \section{Introduction}
+
+In arithmetic geometry, we distinguish between local zeta functions (attached to schemes in positive characteristic) and global zeta functions (attached to schemes in characteristic zero). Local zeta functions have a highly constrained structure, governed by the four Weil conjectures (rationality, functional equation, local Riemann hypothesis and connection to Betti numbers).
+
+There is a well-known analogy between local and global zeta functions, under which the global analogue of rationality is false, the global analogue of Betti numbers makes no sense, and the global analogue of the functional equation would follow from the global Langlands correspondence and the known functional equation for automorphic L-function. The global analogue of the local Riemann hypothesis is also expected to hold; this is the statement sometimes referred to as the "Grand", or "Generalized" Riemann hypothesis.
+
+In these notes we describe some numerical evidence that may be pointing to a new and completely different kind of analogy between local and global zeta functions. We formulate four guiding but rather imprecise conjectures (Conjecture X, Conjecture Y, Conjecture Z and Conjecture N). Here Conjecture X is analogous to the four Weil conjectures, while Conjecture Y and Z speculate on the existence of a geometric and cohomological framework explaining Conjecture X. Conjecture N is a complementary conjecture, describing the role of the conductor associated to an L-function.
+
+It is surprising that under this new analogy, the Riemann hypothesis over  is not related to the global RH, but rather to special value conjectures like BSD.
 
 \subsection{Formal series associated to a scheme}
 
