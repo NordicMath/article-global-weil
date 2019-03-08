@@ -119,39 +119,56 @@ Another (equally fundamental) problem with existing approaches is that insofar a
 
 In the present note, we take as our starting point the naive idea that (1) the sequence of coefficients of a local zeta function and (2) the sequence of coefficients of a global zeta function (or L-function) \emph{should be considered on an equal footing}. From the viewpoint of traditional scheme theory, this doesn't make any sense, but the point is that we might be working towards a new geometric theory which in the local case specializes to the theory of schemes, but which in the global case doesn't even admit a base-change functor to schemes over $\mathrm{Spec} \ \mathbb{Z}$.
 
-Based on numerical patterns in a number of examples, we postulate the existence of new objects called \emph{dark schemes}, and make some observations suggesting that a good theory of dark schemes may circumvent some of the finiteness problems seemingly inherent in other approaches to the field with one element, while allowing for some pleasant unifying analogies between local zeta functions and global zeta functions, crucially including some examples of $GL_2$ type. All of this is conveniently expressed in terms of a simple book-keeping tool we call Euler-Leibniz-Newton (or ELN) triples.
+Based on numerical patterns in a number of examples, we postulate the existence of new objects called \emph{dark schemes}, and make some observations suggesting that a good theory of dark schemes may circumvent some of the finiteness problems seemingly inherent in other approaches to the field with one element, while allowing for some pleasant unifying analogies between local zeta functions and global zeta functions, crucially including some examples of $GL_2$ type. All of this is conveniently expressed in terms of certain power series we refer to as $m$-functions, together with a simple book-keeping tool we call Euler-Leibniz-Newton (or ELN) triples.
 
-We begin with the introduction of ELN triples and a very brief review of zeta functions, before giving some key examples of the patterns appearing for local zeta functions, for global zeta functions of $GL_1$ type and for global zeta functions of $GL_2$ type. In the last section we collect some philosophical remarks and directions for future study.
-
-
+We begin with a very brief review of zeta functions and the introduction of $m$-functions and ELN triples, before giving some key examples of the mysterious patterns appearing for local zeta functions, for global zeta functions of $GL_1$ type and for global zeta functions of $GL_2$ type. In the last section we collect some philosophical remarks and directions for future study.
 
 
 
 \section{Zeta functions and L-functions}
 
-We assume that the reader is familiar with (or is willing to read about) the following constructions.
+We assume that the reader is familiar with (or is willing to read about) the following three constructions.
 
 \begin{enumerate}
 
 \item When $X$ is a scheme which is flat and of finite type over $\mathrm{Spec} \ \mathbb{Z}$, then the Hasse-Weil zeta function associated to $X$ is defined by
-$$ Z_X(s) = \prod_{x \in X_{cl}} \left( 1 - N(x)^{-s}   \right)^{-1}  $$
-Here $X_{cl}$ is the set of closed points of the scheme $X$, and for any closed point $x$, we have written $N(x)$ for the number of elements in the residue field of $x$. See \S 6.5 of \cite{Mustata} for more details.
-\item For any motive $M$ over $\mathbb{Q}$, we have the motivic L-function $L(M, s)$. Reference: \S 4.5 of \cite{Farmer17}.
+$$ \zeta_X(s) = \prod_{x \in X_{cl}} \left( 1 - N(x)^{-s}   \right)^{-1}  $$
+Here $X_{cl}$ is the set of closed points of the scheme $X$, and for any closed point $x$, we have written $N(x)$ for the number of elements in the residue field of $x$. When $X = \mathrm{Spec} \ \mathbb{Z}$ we recover the Riemann zeta function. See \S 6.5 of \cite{Mustata} for more details.
+\item For any motive $M$ over $\mathbb{Q}$, we have the motivic L-function $L(M, s)$. Reference: \S 4.5 of \cite{Farmer17}. Examples include Dirichlet L-functions and L-functions of elliptic curves.
 \item When $V$ is a variety over a finite field $\mathbb{F}_q$, we have a zeta function
+$$  Z_X(t) =   $$
+
+
+Items 1 and 2 are both examples of \emph{Dirichlet series}, i.e. series of the form $\sum_{n=1}^{\infty} a_n n^-s$, and we refer to them as \emph{global} objects because they incorporate information from \emph{all} primes. Item 3 is an ordinary power series ("MacLaurin series") but can also be written as a Dirichlet series, via the substitution $t \rightsquigarrow q^{-s}$. We write
+$$ \zeta_X(s) = Z_X(q^{-s})  $$
+for this Dirichlet series. It is of a different nature from the previous ones, since it encodes information from just a single prime (namely the characteristic of the field $\mathbb{F}_q$). We therefore refer to item 3 as a \emph{local} object.
 
 \end{enumerate}
 
-For a concrete example, consider the projective scheme $X$ defined by the equation
-$  y^2 = \ldots $
+\paragraph{A concrete example} Consider the scheme $X$ defined by the equation
+$$  y^2 = \ldots $$
 
-
-Hasse-Weil zeta functions in the local and global case. Motivic L-functions. Definition of $m$-functions.
-
+Explain here how each of the three items appear from this equation.
 
 \section{The idea of $m$-functions}
 
+Given a Dirichlet series
+$$   \sum_{n = 1}^{\infty}  \frac{a_n}{n^s}   $$
+we define the \emph{associated $m$-function} as the power series
+
+$$ \sum_{n = 1}^{\infty} a_n t^{n-1}   $$
+
+We can think of this as just a formal power series (with complex coefficients) but if the Dirichlet series comes from one of the constructions of the previous paragraph, it is in fact a convergent series on the open unit disc, so it defines an analytic function there.
 
 
+\paragraph{Example}
+
+If $L(s)$ is the L-function of an elliptic curve, then the $m$-function is just the $q$-expansion of the associated modular form, except for the convention that the coefficient $a_1$ is placed in degree 0 rather than degree 1 (and that the variable $q$ is replaced by the variable $t$).
+
+
+\paragraph{Example}
+
+If $L(s)$ is the Dirichlet L-function associated to a Dirichlet character $\chi$, then the $m$-function is a power series which is
 
 \section{ELN triples and the idea of dark schemes}
 
