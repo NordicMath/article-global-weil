@@ -61,7 +61,7 @@
 
 \title{
 \normalfont \normalsize
-\textsc{Work in progress; do not distribute!} \\ [25pt] % Your university, school and/or department name(s)
+%\textsc{Work in progress; do not distribute!} \\ [25pt] % Your university, school and/or department name(s)
 \horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
 \LARGE New analogies between local and global zeta functions \\ % The assignment title
 \horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
@@ -82,13 +82,14 @@
 
 \begin{abstract}
 
-The primary purpose of this document is to record some numerical patterns observed while experimenting with motivic L-functions. A secondary purpose is to point out some analogies between these patterns (which concern "global" zeta functions) with the Weil conjectures (which are theorems on local zeta functions). As far as we can tell, these analogies are new. In particular, they are distinct from (and possibly unrelated to) the classical stories which compare the global Riemann hypothesis and the global functional equation to the Weil conjectures.
+REWRITE: The primary purpose of this note is to record some numerical patterns observed while experimenting with motivic L-functions. A secondary purpose is to point out some analogies between these patterns (which concern \emph{global} zeta functions) with the Weil conjectures (which are theorems on \emph{local} zeta functions). As far as we can tell, these analogies are new. In particular, they are distinct from (and possibly unrelated to) the classical stories which compare the global Riemann hypothesis and the global functional equation to the Weil conjectures.
 
 These very informal notes grew out of two separate projects, namely (1) a student project on L-functions and reciprocity laws by the first two authors, and (2) a project on analogies and automated reasoning by the other two.
 
 
 \end{abstract}
 
+\tableofcontents
 
 \newpage
 
@@ -101,98 +102,73 @@ Here will be pictures:
 (3) The weird pair conjecture with 289 and 389 as the two examples (one m and one M).
 
 
-\newpage
-
-\tableofcontents
-
 
 \newpage
-
-\section{Philosophical comments}
-
-
-
-
-
-
-
-
-GAAAAHHHRG. Rewrite this.
-
-It is not at all clear that the language of "the field with one element" is appropriate for the purpose of interpreting our numerical observations.
-
-Things we want to get away from:
-\begin{itemize}
-\item In some of the classical heuristic stories, the object $\mathrm{Spec} \ \mathbb{Z}$ is not of finite type over $\mathrm{Spec} \ \mathbb{F}_1$. Can we get away completely from the need for a base change functor?
-\item A global L-function has infinitely many zeroes, and hence any attempt to find a Poincaré duality explaining the functional equation will have to be expressed using infinite-dimensional cohomology groups. Can one get around this issue?
-
-\item There is some overlap between the set of
-
-
-There are three operations on Dirichlet series, and it is not at all clear how these operations relate to operations on the dark schemes or on the Grothendieck gadgets.
-
-Addition: Mention Dirichlet L-function decomposition into Hurwitz, class group decomposition of Dedekind zeta, and eta quotient sum decompositions.
-
-
-
-Introduce the idea of a Grothendieck gadget. It is an object which for any positive integer has a degree $d$ point count.
-
-\end{itemize}
-
 
 \section{Introduction}
 
-Consider the following abstract data.
+The analogy between number fields and function fields, and the closely related analogy between global zeta functions and local zeta functions, are among the main sources of mysteries in arithmetic geometry.
 
-\begin{itemize}
-\item[Z1] An infinite sequence
-$$ a_1, a_2, a_3, \ldots  $$
-of complex numbers. We write $a$ for the entire sequence and (by slight abuse of notation) we write $a(t)$ for the formal generating series
-$$ 1 + a_1 t + a_2 t^2 + a_3 t^3 + \ldots $$
-\item[Z2] A Grothendieck gadget $G$. We write
-$$ b_1, b_2, b_3, \ldots   $$
-for the associated point counts, and we denote this entire sequence by $b$.
-\end{itemize}
+Local zeta functions on one hand are well understood by the theorems known as the Weil conjectures, together with the geometric framework given by Grothendieck's theory of schemes and motives over finite fields.
 
-The pair $(a, G)$ is called a \emph{zeta object} if the following two axioms are satisfied.
-\begin{itemize}
-\item[A1] The formal series $a(t)$ has some non-zero radius of convergence $r$, and it extends to a meromorphic function, denoted by $a(z)$, on the entire complex plane. We write $\alpha_1, \alpha_2, \ldots$ for the poles of this function (ordered first by absolute value and if necessary by argument), and similarly we write $\beta_1, \beta_2, \ldots$ for the zeroes.
-\item[A2] The sequence $a$ is the Euler transform of the sequence $b$.
-\end{itemize}
+Global zeta functions (and their constituent pieces referred to as \emph{L-functions}) on the other hand are poorly understood. Many important conjectures are unproven, and we lack a geometric framework playing a role analogous to Grothendieck's theory of schemes.
 
-We may also have laws that give constraints on the function $a(z)$ (and hence on the original sequence $a$). Such a law might be valid for a single zeta object or for some family of zeta objects, depending on the context. In particular, we might have:
+The hoped-for but still missing geometric framework for the global setting is sometimes referred to as \emph{geometry over the field with one element}, or \emph{$\mathbb{F}_1$-geometry}. Many suggestions have been put forward for how to build such a theory (give refs), but it seems like not a single one of these attempts has led to even a single lemma saying something new about a single global zeta function. In other words, although these theories may be quite sophisticated and useful for certain purposes, they are (\emph{at least in their current state}) inadequate for the specific purpose of better understanding global zeta functions.
 
-\begin{itemize}
-\item[L1] A law that reconstructs the function $a(z)$ from the poles and the zeroes together with some auxiliary data $D$.
-\item[L2] A law which specifies a symmetry possessed by the sets of zeroes and poles.
-\item[L3] A law which specifies the absolute values and/or the arguments of the poles and the zeroes of $a(t)$.
-\item[L4] A law which connects the poles and the zeroes to the gadget $G$.
-\end{itemize}
+Another (equally fundamental) problem with existing approaches is that insofar as they relate to global zeta functions at all, they only seem to relate to the zeta functions for which the constituent L-functions are of $GL_1$ type. As an example of this phenomenon (which is related to the meaning of \emph{finite type} in $\mathbb{F}_1$-geometry), see Theorem 0.1 of Borger (ref, p. 3) and the subsequent remarks made there, saying that only abelian Artin-Tate motives can be defined over $\mathbb{F}_1$. %(In the philosophy of the Langlands program, every L-function is of $GL_n$ type for some positive integer $n$, and the examples of $GL_1$ type are the simplest ones).
+
+In the present note, we take as our starting point the naive idea that (1) the sequence of coefficients of a local zeta function and (2) the sequence of coefficients of a global zeta function (or L-function) \emph{should be considered on an equal footing}. From the viewpoint of traditional scheme theory, this doesn't make any sense, but the point is that we might be working towards a new geometric theory which in the local case specializes to the theory of schemes, but which in the global case doesn't even admit a base-change functor to schemes over $\mathrm{Spec} \ \mathbb{Z}$.
+
+Based on numerical patterns in a number of examples, we postulate the existence of new objects called \emph{dark schemes}, and make some observations suggesting that a good theory of dark schemes may circumvent some of the finiteness problems seemingly inherent in other approaches to the field with one element, while allowing for some pleasant unifying analogies between local zeta functions and global zeta functions, crucially including some examples of $GL_2$ type. All of this is conveniently expressed in terms of a simple book-keeping tool we call Euler-Leibniz-Newton (or ELN) triples.
+
+We begin with the introduction of ELN triples and a very brief review of zeta functions, before giving some key examples of the patterns appearing for local zeta functions, for global zeta functions of $GL_1$ type and for global zeta functions of $GL_2$ type. In the last section we collect some philosophical remarks and directions for future study.
 
 
 
-\section{Notes to include}
-
-For a local zeta function $Z(t)$ associated to a smooth projective variety $X$ over $\mathbb{F}_q$, we have the functional equation
-$$  Z \left( \frac{1}{q^d t} \right) = \varepsilon q^{\frac{dE}{2}} t^E Z(t) $$
-where $d$ is the dimension of $X$, $E$ is the Euler characteristic, and $\varepsilon$ is some sign (+1 or -1).
-
-Set $q=1$ in the above functional equation. This gives the equation
-$$  Z \left( \frac{1}{t} \right) = \varepsilon t^E Z(t) $$
-which is in perfect agreement with the $m$-function of a Dirichlet character, which satisfies
-$$  m \left( \frac{1}{t} \right) = -\chi(-1) t^2 m(t) $$
-The analogy suggests that $-\chi(-1)$ should be viewed as the sign of the functional equation, while the Euler characteristic of any non-trivial Dirichlet character should be 2.
-
-There is yet another analogous example that might be of interest. Consider the theta function
-$$ \Theta(t) := \sum_{n \in \mathbb{Z}} e^{-\pi n^2 t}   $$
-It is well known that we have
-$$ \Theta(\frac{1}{t}) =  t^{\frac{1}{2}} \Theta(t)   $$
-and this functional equation implies the global functional equation for the Riemann zeta function. Is there an underlying object here which has Euler characteristic $\frac{1}{2}$??
-Reference: \url{http://math.mit.edu/~poonen/786/notes.pdf}, see page 3 where this functional equation is stated as true for all positive real $t$.
-
-\section{Examples}
 
 
+\section{Zeta functions and L-functions}
+
+We assume that the reader is familiar with (or is willing to read about) the following constructions.
+
+\begin{enumerate}
+
+\item When $X$ is a scheme which is flat and of finite type over $\mathrm{Spec} \ \mathbb{Z}$, then the Hasse-Weil zeta function associated to $X$ is defined by
+$$ Z_X(s) = \prod_{x \in X_{cl}} \left( 1 - N(x)^{-s}   \right)^{-1}  $$
+Here $X_{cl}$ is the set of closed points of the scheme $X$, and for any closed point $x$, we have written $N(x)$ for the number of elements in the residue field of $x$. See \S 6.5 of \cite{Mustata} for more details.
+\item For any motive $M$ over $\mathbb{Q}$, we have the motivic L-function $L(M, s)$. Reference: \S 4.5 of \cite{Farmer17}.
+\item When $V$ is a variety over a finite field $\mathbb{F}_q$, we have a zeta function
+
+\end{enumerate}
+
+For a concrete example, consider the projective scheme $X$ defined by the equation
+$  y^2 = \ldots $
+
+
+Hasse-Weil zeta functions in the local and global case. Motivic L-functions. Definition of $m$-functions.
+
+
+\section{The idea of $m$-functions}
+
+
+
+
+\section{ELN triples and the idea of dark schemes}
+
+Define Euler transform, Newton transform, Leibniz transform, and ELN triple. Give examples.
+
+
+\section{Then local (and hence rational) case}
+
+
+\section{The global but still rational case (a.k.a. $GL_1$}
+
+
+\section{The global non-rational case (examples from $GL_2$)}
+
+
+
+\section{Remarks and questions}
 
 
 

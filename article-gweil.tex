@@ -495,6 +495,58 @@ We should consider the ordinary generating series of the Dirichlet coefficients,
 Can we use the box decomposition for quantization? Suppose we can prove that any elliptic curve can be decomposed into a eta things from some finite lists. This might then help. Also, note that $exp(\sqrt{4N})$ is the same as $exp(\sqrt{N})^2$, which might lead precisely to the sort of cancellation required for the Taylor coefficient to be exactly zero.
 
 
+\section{Stuff from previous version}
+
+Consider the following abstract data.
+
+\begin{itemize}
+\item[Z1] An infinite sequence
+$$ a_1, a_2, a_3, \ldots  $$
+of complex numbers. We write $a$ for the entire sequence and (by slight abuse of notation) we write $a(t)$ for the formal generating series
+$$ 1 + a_1 t + a_2 t^2 + a_3 t^3 + \ldots $$
+\item[Z2] A Grothendieck gadget $G$. We write
+$$ b_1, b_2, b_3, \ldots   $$
+for the associated point counts, and we denote this entire sequence by $b$.
+\end{itemize}
+
+The pair $(a, G)$ is called a \emph{zeta object} if the following two axioms are satisfied.
+\begin{itemize}
+\item[A1] The formal series $a(t)$ has some non-zero radius of convergence $r$, and it extends to a meromorphic function, denoted by $a(z)$, on the entire complex plane. We write $\alpha_1, \alpha_2, \ldots$ for the poles of this function (ordered first by absolute value and if necessary by argument), and similarly we write $\beta_1, \beta_2, \ldots$ for the zeroes.
+\item[A2] The sequence $a$ is the Euler transform of the sequence $b$.
+\end{itemize}
+
+We may also have laws that give constraints on the function $a(z)$ (and hence on the original sequence $a$). Such a law might be valid for a single zeta object or for some family of zeta objects, depending on the context. In particular, we might have:
+
+\begin{itemize}
+\item[L1] A law that reconstructs the function $a(z)$ from the poles and the zeroes together with some auxiliary data $D$.
+\item[L2] A law which specifies a symmetry possessed by the sets of zeroes and poles.
+\item[L3] A law which specifies the absolute values and/or the arguments of the poles and the zeroes of $a(t)$.
+\item[L4] A law which connects the poles and the zeroes to the gadget $G$.
+\end{itemize}
+
+
+
+\subsection{Notes to include}
+
+For a local zeta function $Z(t)$ associated to a smooth projective variety $X$ over $\mathbb{F}_q$, we have the functional equation
+$$  Z \left( \frac{1}{q^d t} \right) = \varepsilon q^{\frac{dE}{2}} t^E Z(t) $$
+where $d$ is the dimension of $X$, $E$ is the Euler characteristic, and $\varepsilon$ is some sign (+1 or -1).
+
+Set $q=1$ in the above functional equation. This gives the equation
+$$  Z \left( \frac{1}{t} \right) = \varepsilon t^E Z(t) $$
+which is in perfect agreement with the $m$-function of a Dirichlet character, which satisfies
+$$  m \left( \frac{1}{t} \right) = -\chi(-1) t^2 m(t) $$
+The analogy suggests that $-\chi(-1)$ should be viewed as the sign of the functional equation, while the Euler characteristic of any non-trivial Dirichlet character should be 2.
+
+There is yet another analogous example that might be of interest. Consider the theta function
+$$ \Theta(t) := \sum_{n \in \mathbb{Z}} e^{-\pi n^2 t}   $$
+It is well known that we have
+$$ \Theta(\frac{1}{t}) =  t^{\frac{1}{2}} \Theta(t)   $$
+and this functional equation implies the global functional equation for the Riemann zeta function. Is there an underlying object here which has Euler characteristic $\frac{1}{2}$??
+Reference: \url{http://math.mit.edu/~poonen/786/notes.pdf}, see page 3 where this functional equation is stated as true for all positive real $t$.
+
+
+
 
 
 %----------------------------------------------------------------------------------------
