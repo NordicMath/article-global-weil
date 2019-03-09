@@ -117,15 +117,15 @@ The hoped-for but still missing geometric framework for the global setting is so
 
 Another (equally fundamental) problem with existing approaches is that insofar as they relate to global zeta functions at all, they only seem to relate to the zeta functions for which the constituent L-functions are of $GL_1$ type. As an example of this phenomenon (which is related to the meaning of \emph{finite type} in $\mathbb{F}_1$-geometry), see Theorem 0.1 of Borger (ref, p. 3) and the subsequent remarks made there, saying that only abelian Artin-Tate motives can be defined over $\mathbb{F}_1$. %(In the philosophy of the Langlands program, every L-function is of $GL_n$ type for some positive integer $n$, and the examples of $GL_1$ type are the simplest ones).
 
-In the present note, we take as our starting point the naive idea that (1) the sequence of coefficients of a local zeta function and (2) the sequence of coefficients of a global zeta function (or L-function) \emph{should be considered on an equal footing}. From the viewpoint of traditional scheme theory, this doesn't make any sense, but the point is that we might be working towards a new geometric theory which in the local case specializes to the theory of schemes, but which in the global case doesn't even admit a base-change functor to schemes over $\mathrm{Spec} \ \mathbb{Z}$.
+In the present note, we take as our starting point the incredibly naive idea that (1) the sequence of coefficients of a local zeta function and (2) the sequence of coefficients of a global zeta function (or L-function) \emph{should be considered on an equal footing}. From the viewpoint of traditional scheme theory, this doesn't make any sense, but the point is that we might be working towards a new geometric theory which in the local case specializes to the theory of schemes, but which in the global case doesn't even admit a base-change functor to schemes over $\mathrm{Spec} \ \mathbb{Z}$.
 
 Based on numerical patterns in a number of examples, we postulate the existence of new objects called \emph{dark schemes}, and make some observations suggesting that a good theory of dark schemes may circumvent some of the finiteness problems seemingly inherent in other approaches to the field with one element, while allowing for some pleasant unifying analogies between local zeta functions and global zeta functions, crucially including some examples of $GL_2$ type. All of this is conveniently expressed in terms of certain power series we refer to as $m$-functions, together with a simple book-keeping tool we call Euler-Leibniz-Newton (or ELN) triples.
 
 We begin with a very brief review of zeta functions and the introduction of $m$-functions and ELN triples, before giving some key examples of the mysterious patterns appearing for local zeta functions, for global zeta functions of $GL_1$ type and for global zeta functions of $GL_2$ type. In the last section we collect some philosophical remarks and directions for future study.
 
+\section{The main background ideas}
 
-
-\section{Zeta functions and L-functions}
+\subsection{Zeta functions and L-functions}
 
 We assume that the reader is familiar with (or is willing to read about) the following three constructions.
 
@@ -134,14 +134,14 @@ We assume that the reader is familiar with (or is willing to read about) the fol
 \item When $X$ is a scheme which is flat and of finite type over $\mathrm{Spec} \ \mathbb{Z}$, then the Hasse-Weil zeta function associated to $X$ is defined by
 $$ \zeta_X(s) = \prod_{x \in X_{cl}} \left( 1 - N(x)^{-s}   \right)^{-1}  $$
 Here $X_{cl}$ is the set of closed points of the scheme $X$, and for any closed point $x$, we have written $N(x)$ for the number of elements in the residue field of $x$. When $X = \mathrm{Spec} \ \mathbb{Z}$ we recover the Riemann zeta function. See \S 6.5 of \cite{Mustata} for more details.
-\item For any motive $M$ over $\mathbb{Q}$, we have the motivic L-function $L(M, s)$. Reference: \S 4.5 of \cite{Farmer17}. Examples include Dirichlet L-functions and L-functions of elliptic curves.
+\item For any motive $M$ over $\mathbb{Q}$, we have the motivic L-function $L(M, s)$. Reference: \S 4.5 of \cite{Farmer17}. Examples include Dirichlet L-functions and L-functions of elliptic curves. An important remark is that it is perfectly possible to define and study the L-functions of the form $L(h^i(X)(j), s)$ without having to first define what the motive $h^i(X)(j)$ is or in what category it lives.
 \item When $V$ is a variety over a finite field $\mathbb{F}_q$, we have a zeta function
 $$  Z_X(t) =   $$
 
 
 Items 1 and 2 are both examples of \emph{Dirichlet series}, i.e. series of the form $\sum_{n=1}^{\infty} a_n n^-s$, and we refer to them as \emph{global} objects because they incorporate information from \emph{all} primes. Item 3 is an ordinary power series ("MacLaurin series") but can also be written as a Dirichlet series, via the substitution $t \rightsquigarrow q^{-s}$. We write
 $$ \zeta_X(s) = Z_X(q^{-s})  $$
-for this Dirichlet series. It is of a different nature from the previous ones, since it encodes information from just a single prime (namely the characteristic of the field $\mathbb{F}_q$). We therefore refer to item 3 as a \emph{local} object.
+for this Dirichlet series. It is of a different nature from the previous ones, since it encodes information from just a single prime (namely the characteristic of the field $\mathbb{F}_q$). We therefore refer to item 3 as a \emph{local} object. The coefficients $a_n$ here are \emph{sparse} in the sense that $a_n = 0$ whenever $n$ is not a power of $q$.
 
 \end{enumerate}
 
@@ -150,15 +150,15 @@ $$  y^2 = \ldots $$
 
 Explain here how each of the three items appear from this equation.
 
-\section{The idea of $m$-functions}
+\subsection{The idea of $m$-functions}
 
-Given a Dirichlet series
+For any Dirichlet series
 $$   \sum_{n = 1}^{\infty}  \frac{a_n}{n^s}   $$
-we define the \emph{associated $m$-function} as the power series
+we define \emph{the associated $m$-function} to be
 
-$$ \sum_{n = 1}^{\infty} a_n t^{n-1}   $$
+$$ m(t) = a_1 + a_2 t + a_3 t^2 + \ldots = \sum_{n = 1}^{\infty} a_n t^{n-1}   $$
 
-We can think of this as just a formal power series (with complex coefficients) but if the Dirichlet series comes from one of the constructions of the previous paragraph, it is in fact a convergent series on the open unit disc, so it defines an analytic function there.
+We can think of this as just a formal power series (with complex coefficients) but if the Dirichlet series comes from one of the constructions of the previous paragraph, there are known bounds on the coefficients $a_n$ which imply that the $m$-function is in fact a convergent series on the open unit disc, and hence defines an analytic function there.
 
 
 \paragraph{Example}
@@ -168,17 +168,28 @@ If $L(s)$ is the L-function of an elliptic curve, then the $m$-function is just 
 
 \paragraph{Example}
 
-If $L(s)$ is the Dirichlet L-function associated to a Dirichlet character $\chi$, then the $m$-function is a power series which is
+If $L(s)$ is the Dirichlet L-function associated to a Dirichlet character $\chi$, then the $m$-function is a power series which is \emph{rational}, since the coefficients form a periodic sequence. A very simple example is given by the unique nontrivial Dirichlet character mod 4, from which we get the $m$-function
+$$ 1 - t^2 + \ldots  = \frac{1}{1} $$
+(check details).
 
-\section{ELN triples and the idea of dark schemes}
+
+\subsection{ELN triples}
 
 Define Euler transform, Newton transform, Leibniz transform, and ELN triple. Give examples.
 
 
+\subsection{The idea of dark schemes}
+
+
+\subsection{Functional equations of zzz type}
+
+
+
 \section{Then local (and hence rational) case}
 
+Explain the meaning of rationality, the zeta function encoding point counts in all finite fields of a given characteristic $p$, which is surprising given that these fields are not related by any maps.
 
-\section{The global but still rational case (a.k.a. $GL_1$}
+\section{The global but still rational case (a.k.a. $GL_1$)}
 
 
 \section{The global non-rational case (examples from $GL_2$)}
@@ -186,6 +197,29 @@ Define Euler transform, Newton transform, Leibniz transform, and ELN triple. Giv
 
 
 \section{Remarks and questions}
+
+
+\subsection{Weil conjectures over $\mathbb{F}_1$?}
+
+Review here each of the Weil conjectures if needed, and the analogous statements over $\mathbb{F}_1$.
+
+
+
+Note that under the analogy we propose, Deligne's Riemann hypothesis in the local setting correspond to global statements that are not at all related to the global Riemann hypothesis, but instead to the BSD conjecture!
+
+\subsection{Further remarks on dark schemes}
+
+We could recall the four viewpoints on schemes (copy from article document section 1.1.).
+
+Mention relation to Tate twist and lack of relation to direct sum and tensor product. We define the differential operator "multiply by t then differentiate", and this corresponds to taking Tate twist on motives.
+
+\subsection{On two-dimensional sequences}
+
+
+
+\subsection{Final comments}
+
+Hope for connection to Haran, Toen-Vezzosi, Scholze etc?
 
 
 
